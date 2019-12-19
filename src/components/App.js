@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Event from './Event';
 import reducer from '../reducers';
 
 
@@ -34,7 +35,7 @@ const App = () => {
             <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)}/>
 
             <button className="btn btn-primary" onClick={addEvent}>インベントを作成する</button> 
-            <button className="btn btn-danger">全てのイベントを削除する</button> 
+            <button className="btn btn-danger" >全てのイベントを削除する</button> 
           </div>
         </form>
 
@@ -48,6 +49,7 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
+              { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch} />))}
             </tbody>
           </table>
       </div>
